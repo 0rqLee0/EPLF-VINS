@@ -1,0 +1,13 @@
+终端1 - 运行SLAM：                                                                                                                                                                      
+  cd /home/lee/EPLF-VINS                                                                                                                                                                  
+  ./run_docker.sh                                                                                                                                                                         
+                                                                                                                                                                                          
+  # 容器内                                                                                                                                                                                
+  roslaunch lfvins_estimator euroc_no_rviz.launch & rosbag play /datasets/euroc_mav/MH_01_easy.bag                                                                                                                                          
+  roslaunch lfvins_estimator d435i.launch & rosbag play /datasets/boardupdate/20251202/1.bag
+
+终端2 - 运行RViz：                                                                                                                                                                      
+  cd /home/lee/EPLF-VINS                                                                                                                                                                  
+  ./host_rviz.sh       
+
+sudo cp /home/lee/EPLF-VINS/result/d435i/eplfvins_loop.csv /home/lee/EPLF-VINS/result/d435i/eplfvins_loop_tum.txt                                                         

@@ -16,7 +16,7 @@ find_package(catkin REQUIRED COMPONENTS
     camera_model
     )
 
-find_package(OpenCV 3.4.16 REQUIRED)
+find_package(OpenCV 3.4 REQUIRED)
 
 find_package(Ceres REQUIRED)
 

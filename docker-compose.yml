@@ -1,0 +1,15 @@
+services:
+  eplf-vins:
+    build: .
+    image: eplf-vins:melodic
+    container_name: eplf-vins
+    network_mode: host
+    ipc: host
+    volumes:
+      # 挂载数据集目录
+      - /home/lee/Documents/Datasets_VSLAM:/datasets:ro
+      # 挂载输出目录
+      - /home/lee/EPLF-VINS/result:/results
+    stdin_open: true
+    tty: true
+    command: /bin/bash

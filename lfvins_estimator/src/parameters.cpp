@@ -70,7 +70,9 @@ void readParameters(ros::NodeHandle &n)
 
     std::string OUTPUT_PATH;
     fsSettings["output_path"] >> OUTPUT_PATH;
-    VINS_RESULT_PATH = OUTPUT_PATH + "/eplfvins_no_loop.csv";
+    std::string sequence_name;
+    n.param<std::string>("sequence_name", sequence_name, "sequence");
+    VINS_RESULT_PATH = OUTPUT_PATH + "/" + sequence_name + "_no_loop.txt";
     std::cout << "result path " << VINS_RESULT_PATH << std::endl;
 
 

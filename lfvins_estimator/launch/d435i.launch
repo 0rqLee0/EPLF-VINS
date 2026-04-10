@@ -1,6 +1,7 @@
 <launch>
     <arg name="config_path" default = "$(find lf_feature_tracker)/../config/d435i/d435i_config.yaml" />
     <arg name="vins_path" default = "$(find lf_feature_tracker)/../config/../" />
+    <arg name="sequence_name" default = "sequence" />
 
     <!-- 不启动rviz，由宿主机运行 -->
 
@@ -17,10 +18,12 @@
     <node name="lfvins_estimator" pkg="lfvins_estimator" type="lfvins_estimator" output="screen">
         <param name="config_file" type="string" value="$(arg config_path)" />
         <param name="vins_folder" type="string" value="$(arg vins_path)" />
+        <param name="sequence_name" type="string" value="$(arg sequence_name)" />
     </node>
 
     <node name="lf_pose_graph" pkg="lf_pose_graph" type="lf_pose_graph" output="screen">
         <param name="config_file" type="string" value="$(arg config_path)" />
+        <param name="sequence_name" type="string" value="$(arg sequence_name)" />
         <param name="visualization_shift_x" type="int" value="0" />
         <param name="visualization_shift_y" type="int" value="0" />
         <param name="skip_cnt" type="int" value="0" />

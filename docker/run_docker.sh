@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # 启动Docker容器运行EPLF-VINS
-cd /home/lee/EPLF-VINS
+cd "$(dirname "$0")"
 
 # 创建结果目录
-mkdir -p /home/lee/EPLF-VINS/result
+mkdir -p ../result
 
 echo "启动EPLF-VINS Docker容器..."
 docker compose run eplf-vins

@@ -1,6 +1,8 @@
 services:
   eplf-vins:
-    build: .
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
     image: eplf-vins:melodic
     container_name: eplf-vins
     network_mode: host
@@ -9,7 +11,7 @@ services:
       # 挂载数据集目录
       - /home/lee/Documents/Datasets_VSLAM:/datasets:ro
       # 挂载输出目录
-      - /home/lee/EPLF-VINS/result:/results
+      - /home/lee/Results/line/EPLF:/results
     stdin_open: true
     tty: true
     command: /bin/bash

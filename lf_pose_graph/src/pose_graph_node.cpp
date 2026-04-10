@@ -441,10 +441,11 @@ void command()
         char c = getchar();
         if (c == 's')
         {
-            m_process.lock();
-            posegraph.savePoseGraph();
-            m_process.unlock();
-            printf("save pose graph finish\nyou can set 'load_previous_pose_graph' to 1 in the config file to reuse it next time\n");
+            // pose graph saving disabled — only trajectory CSV files are saved
+            // m_process.lock();
+            // posegraph.savePoseGraph();
+            // m_process.unlock();
+            // printf("save pose graph finish\nyou can set 'load_previous_pose_graph' to 1 in the config file to reuse it next time\n");
             // printf("program shutting down...\n");
             // ros::shutdown();
         }
@@ -504,11 +505,15 @@ int main(int argc, char **argv)
         // create folder if not exists
         FileSystemHelper::createDirectoryIfNotExists(POSE_GRAPH_SAVE_PATH.c_str());
         FileSystemHelper::createDirectoryIfNotExists(VINS_RESULT_PATH.c_str());
-		
+
+        std::string sequence_name;
+        n.getParam("sequence_name", sequence_name);
+        if (sequence_name.empty()) sequence_name = "sequence";
+
 		 VISUALIZE_IMU_FORWARD = fsSettings["visualize_imu_forward"];
         LOAD_PREVIOUS_POSE_GRAPH = fsSettings["load_previous_pose_graph"];
         FAST_RELOCALIZATION = fsSettings["fast_relocalization"];
-        VINS_RESULT_PATH = VINS_RESULT_PATH + "/eplfvins_loop.csv";
+        VINS_RESULT_PATH = VINS_RESULT_PATH + "/" + sequence_name + ".txt";
         // std::ofstream fout(VINS_RESULT_PATH, std::ios::out);
         // fout.close();
         fsSettings.release();

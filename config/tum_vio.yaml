@@ -3,7 +3,7 @@
 #common parameters
 imu_topic: "/imu0"
 image_topic: "/cam0/image_raw"
-output_path: "/home/jiangdi/EPLF_WS/EPLF_VINS_WS/src/Trajactory/"
+output_path: "/results/tumvi/"
 
 #camera calibration 
 model_type: KANNALA_BRANDT
